@@ -7,6 +7,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/react/cleanup-after-each'; 
 import { fireEvent } from '@testing-library/react/dist'; 
 
+
 it("renders without crashing", () => {
   const div = document.createElement('div');
   ReactDOM.render(<App />, div);
@@ -20,6 +21,7 @@ it("renders successfully", () => {
 it("successfully strikes", () => {
   const { getAllByText, getByText } = render (<App />);
   const button = getAllByText(/strike/i)[1];
+  // console.log(button.textContent)
   fireEvent.click(button);
   getByText(/1/);
 });
