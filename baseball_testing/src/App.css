@@ -1,4 +1,14 @@
 .App {
- width: 1000px;
+ width: 800px;
  margin: 0 auto;
+}
+
+.mainscore {
+    display: flex;
+    justify-content: space-around;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-evenly;
 }

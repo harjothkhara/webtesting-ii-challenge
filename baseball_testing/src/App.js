@@ -9,31 +9,44 @@ class App extends Component {
     balls: 0
   };
 
+// balls and strikes reset to 0 when a hit is recorded.
+baseHit = () => {
+  this.setState({
+    balls: 0,
+    strikes: 0
+  })
+}  
+
 foulBall = () => {
   this.setState(prevState => ({
     strikes: prevState.strike < 2 ? prevState.strikes + 1 : prevState.strikes
   }))
 }
 
-ball = () => {
+strike = () => {
   this.setState(prevState => ({
-    balls: prevState.balls === 3 ? 0 : prevState.ball + 1,
-    strikes: prevState.balls === 3 ? 0 : prevState.strikes
+    balls: prevState.strikes === 2 ? 0 : prevState.balls,
+    strikes: prevState.strikes === 2 ? 0 : prevState.strikes + 1
   }));
 };
 
-strike = () => {
+ball = () => {
   this.setState(prevState => ({
-    balls: prevState.strikes === 2 ? 0 : prevState.balls, 
-    strikes: prevState.strikes === 2 ? 0 : prevState.strikes + 1 //strike out
-  }))
+    balls: prevState.balls === 3 ? 0 : prevState.balls + 1, 
+    strikes: prevState.balls === 3 ? 0 : prevState.strikes
+  }));
 };
 
 render() {
   return (
     <div className="App">
-      <Display />
-      <Dashboard />
+      <Display strikes={this.state.strikes} balls={this.state.balls} />
+      <Dashboard 
+        baseHit={this.baseHit}
+        foulBall={this.foulBall}
+        strike={this.strike} 
+        ball={this.ball}
+        />
     </div>
   );
  }
