@@ -1,0 +1,8 @@
+{
+  "name": "webtesting-ii-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/harjothkhara/webtesting-ii-challenge.git",
+  "author": "harjothkhara <harjoth.khara@gmail.com>",
+  "license": "MIT"
+}
